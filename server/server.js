@@ -1,6 +1,7 @@
 
 const express = require ('express');
 const app = express();
+app.use(express.json());
 const PORT = 8085;
 
 // this is working
@@ -11,6 +12,7 @@ const PORT = 8085;
 
 const fs = require("fs");
 
+let response;
 const books =
 {
     title: "Alli goes to school",
@@ -40,7 +42,26 @@ app.get('/test2', (req, res) =>{
         message:'test2'
     })
 });
+app.post('/updateMap', (req, res) =>{
+    
+    res.status(200).send({
+        message:'map data send'
+    })
+    updateMapData(req.body);
+});
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`)
   })
+
+
+
+function updateMapData(jsonData){
+    fs.writeFile(`./server/${jsonData.map.name}.json`, JSON.stringify(jsonData.map), 'utf8', (err) => {
+        if (err) {
+            console.error('Error writing to file', err);
+        } else {
+            console.log('Data written to file');
+        }
+    });
+}

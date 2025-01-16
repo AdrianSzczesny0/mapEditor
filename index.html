@@ -3,9 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/UI/Components/DetailModal/style.css">
+    <link rel="stylesheet" href="./public/UI/Components/NavBar/style.css">
+    <link rel="stylesheet" href="./public/UI/Components/Flex/style.css">
+    <link rel="stylesheet" href="./public/UI/Components/Standarized/style.css">
     <title>Document</title>
 </head>
 <body>
     <script type="module" src = "index.js"></script>
+    <div class="modal parent" id="detailsModal">
+        <div class="flex row header spaceBetween draggable" id="detailsHeader">
+            <div class="title">
+                <span> Details</span>
+            </div>
+            <div class="actions flex row spaceBetween">
+                <div class="btn minimize clickable" id="detailsMinBtn"></div>
+                <div class="btn close clickable" id="detailsCloseBtn"></div>
+            </div>
+        </div>
+        <div class="child flex column center hCenter" id="detailsContent">
+
+            <!-- info subwindow -->
+            <div class="subwindow flex column center">
+                <div class="flex row header clickable">
+                    <div class="title">
+                        <span> Info</span>
+                    </div>
+                </div>
+                <div class="flex column subContent hidden">
+                    <div class="item  padLeft10" id="name">Name: Sprite123</div>
+                    <div class="item  padLeft10" id ="id">Id: 1</div>
+                </div>
+            </div>
+
+            <!-- transform subwindow -->
+            <div class="subwindow flex column center">
+                <div class="flex row header clickable">
+                    <div class="title">
+                        <span> Transform</span>
+                    </div>
+                </div>
+                <div class="flex column subContent">
+                    <div class="item  padLeft10" id ="posX">x: 100</div>
+                    <div class="item  padLeft10" id ="posY">y: 200</div>
+                    <div class="item  padLeft10" id ="width">w: 200</div>
+                    <div class="item  padLeft10" id ="height">h: 200</div>
+                </div>
+            </div>
+
+            <!-- piviot -->
+            <div class="subwindow flex column center">
+                <div class="flex row header clickable">
+                    <div class="title">
+                        <span> Piviot</span>
+                    </div>
+                </div>
+                <div class="flex column subContent">
+                    <div class="item  padLeft10" id ="piviotX" >x: 0.5</div>
+                    <div class="item  padLeft10" id ="piviotY">y: 1</div>
+                </div>
+            </div>
+
+            <!-- chunk -->
+            <div class="subwindow flex column center">
+                <div class="flex row header clickable ">
+                    <div class="title">
+                        <span> Chunk</span>
+                    </div>
+                </div>
+                <div class="flex column subContent">
+                    <div class="item  padLeft10" id ="chunkX">x: 1</div>
+                    <div class="item  padLeft10" id ="chunkY">y: 1</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>

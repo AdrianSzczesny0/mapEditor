@@ -1,4 +1,5 @@
 import { Application,Assets,Sprite } from "pixi.js";
+import { DetailsModal } from "./public/UI/Components/DetailModal/DetailsModal";
 
 
 (async () =>
@@ -7,8 +8,7 @@ import { Application,Assets,Sprite } from "pixi.js";
     const app = new Application();
 
     // Initialize the application
-    await app.init({ background: '#1099bb', resizeTo: window });
-
+    await app.init({ background: '#1099bb', width:1280, height:720});
     // Append the application canvas to the document body
     document.body.appendChild(app.canvas);
 
@@ -22,10 +22,12 @@ import { Application,Assets,Sprite } from "pixi.js";
     bunny.anchor.set(0.5);
 
     // Move the sprite to the center of the screen
-    bunny.x = app.screen.width / 2;
-    bunny.y = app.screen.height / 2;
+    bunny.x = 200;
+    bunny.y = 200;
 
     app.stage.addChild(bunny);
+    const detailsModal = new DetailsModal();
+    
 
     // Listen for animate update
     app.ticker.add((time) =>
