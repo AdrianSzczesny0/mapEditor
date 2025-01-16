@@ -12,7 +12,14 @@ export class DetailsModal{
 
         //info
         this.info ={
-            name: document.getElementById("")
+            name: document.getElementById("name"),
+            id: document.getElementById('id'),
+        }
+        this.transform = {
+            x:document.getElementById('posX'),
+            y:document.getElementById('posY'),
+            w:document.getElementById('width'),
+            h: document.getElementById('height'),
         }
         //transform
         //piviot
@@ -24,10 +31,10 @@ export class DetailsModal{
     }
     addEventListeners(){
         this.detailsMinBtn.addEventListener("click", (e)=>{
-            console.log('minimize clicked');
+            this.detailsContent.classList.toggle('hidden');
         })
         this.detailsCloseBtn.addEventListener("click", (e)=>{
-            console.log('close clicked');
+            this.detailsModal.classList.toggle('hidden');
         })
         this.detailsHeader.addEventListener("pointerdown", (e)=>{
             console.log('header clicked');
