@@ -1,11 +1,14 @@
 import { Application,Assets,Sprite } from "pixi.js";
 import { DetailsModal } from "./public/UI/Components/DetailModal/DetailsModal";
+import { AppManager } from "./public/Objects/AppManager";
 
 
 (async () =>
 {
     // Create a new application
     const app = new Application();
+    const appManager = new AppManager();
+    
 
     // Initialize the application
     await app.init({ background: '#1099bb', width:1280, height:720});
@@ -26,8 +29,8 @@ import { DetailsModal } from "./public/UI/Components/DetailModal/DetailsModal";
     bunny.y = 200;
 
     app.stage.addChild(bunny);
-    const detailsModal = new DetailsModal();
     
+
 
     // Listen for animate update
     app.ticker.add((time) =>

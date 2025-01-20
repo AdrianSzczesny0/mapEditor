@@ -1,16 +1,16 @@
+import { EVENTS, createEvent } from "../EventListeners";
 
 
 export class DetailsModal{
     constructor(app){
         this.app = app;
-        this.detailsModal = document.getElementById("detailsModal");
+        this.modal = document.getElementById("detailsModal");
         this.detailsHeader = document.getElementById("detailsHeader");
         this.detailsContent = document.getElementById("detailsContent");
         this.detailsMinBtn = document.getElementById("detailsMinBtn");
         this.detailsCloseBtn = document.getElementById("detailsCloseBtn");
         this.subWindows = document.querySelectorAll(".subwindow");
 
-        //info
         this.info ={
             name: document.getElementById("name"),
             id: document.getElementById('id'),
@@ -21,12 +21,11 @@ export class DetailsModal{
             w:document.getElementById('width'),
             h: document.getElementById('height'),
         }
-        //transform
-        //piviot
-        //chunk
         this.init();
     }
     init(){
+        this.modal.style.left=`${window.innerWidth-525}px`;
+        this.modal.style.top=`${10}px`;
         this.addEventListeners();
     }
     addEventListeners(){
@@ -34,11 +33,17 @@ export class DetailsModal{
             this.detailsContent.classList.toggle('hidden');
         })
         this.detailsCloseBtn.addEventListener("click", (e)=>{
-            this.detailsModal.classList.toggle('hidden');
+            this.modal.classList.toggle('hidden');
         })
         this.detailsHeader.addEventListener("pointerdown", (e)=>{
-            console.log('header clicked');
+            createEvent(EVENTS.WINDOW_CLICK,{data:this});
+            this.detailsHeader.classList.toggle('grabbed');
         })
+        this.detailsHeader.addEventListener("pointerup", (e)=>{
+            this.app.selectedWindow = null;
+            this.detailsHeader.classList.toggle('grabbed');
+        })
+
         this.subWindows.forEach(window => {
             let subwindow = window.querySelector('.header');
             let contentSection = window.querySelector(".subContent");
@@ -46,7 +51,17 @@ export class DetailsModal{
                 contentSection.classList.toggle('hidden');
             })
         });
+        this.addKeyEventListeners();
 
+    }
+    addKeyEventListeners(){
+        document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 27) {
+                this.selectedWindow = null;
+                console.log('null');
+            }
+        };
     }
 }
 

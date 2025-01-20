@@ -17,6 +17,9 @@
 .draggable{
     cursor:grab;
 }
+.grabbed{
+    cursor: grabbing;
+}
 .clickable{
     cursor:pointer;
 }
