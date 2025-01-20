@@ -51,17 +51,6 @@ export class DetailsModal{
                 contentSection.classList.toggle('hidden');
             })
         });
-        this.addKeyEventListeners();
-
-    }
-    addKeyEventListeners(){
-        document.onkeydown = function(evt) {
-            evt = evt || window.event;
-            if (evt.keyCode == 27) {
-                this.selectedWindow = null;
-                console.log('null');
-            }
-        };
     }
 }
 

@@ -57,7 +57,7 @@ app.listen(PORT, () => {
 
 
 function updateMapData(jsonData){
-    fs.writeFile(`./server/${jsonData.map.name}.json`, JSON.stringify(jsonData.map), 'utf8', (err) => {
+    fs.writeFile(`./server/maps/${jsonData.map.name}.json`, JSON.stringify(jsonData.map), 'utf8', (err) => {
         if (err) {
             console.error('Error writing to file', err);
         } else {

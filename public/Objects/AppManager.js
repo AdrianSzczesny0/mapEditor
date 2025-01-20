@@ -38,15 +38,7 @@ export class AppManager{
             this.mousePosition.x = e.clientX;
             this.mousePosition.y = e.clientY;
 
-            if(this.selectedWindow != undefined){
-                // 
-                // console.log('')
-                // console.log('===')
-                // console.log('object x: '+this.selectedWindow.style.left);
-                // console.log('mouse pos: '+this.mousePosition.x);
-                // console.log('offset: '+this.grabbedOffest.x);
-                // console.log('===')
-                // console.log('')
+            if(this.selectedWindow != undefined && this.selectedWindow !=null){
                 this.updateWindowPosition();
             }
         })
@@ -57,6 +49,11 @@ export class AppManager{
         let modalY = Math.floor(modalStyle.getPropertyValue('top').replace('px',''));
         this.grabbedOffest.x = this.mousePosition.x - modalX;
         this.grabbedOffest.y = this.mousePosition.y - modalY;
+    }
+
+    resetOffset(){
+        this.grabbedOffest.x = 0;
+        this.grabbedOffest.y = 0;
     }
 
     updateWindowPosition(){
@@ -70,10 +67,10 @@ export class AppManager{
 
     addGlobalEventHandler(){
         window.addEventListener(EVENTS.WINDOW_CLICK, (e)=>{
+            console.log('CLICKED');
             const window = e.detail.data;
             this.selectedWindow = window.modal;
             this.getOffset();
         })
     }
-    
 }
